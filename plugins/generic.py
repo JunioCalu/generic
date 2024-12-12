@@ -704,6 +704,16 @@ class Generic(Plugin):
             def error(self, msg):
                 log.trace(msg)
 
+        # Caminho para o diretório HOME do usuário
+        home_directory = os.path.expanduser('~')
+
+        # Caminho completo para o arquivo de cookies
+        cookie_file_path = os.path.join(home_directory, 'livebot', 'cookies.txt')
+
+        # Verifica se o diretório existe, caso contrário, cria-o
+        if not os.path.exists(os.path.dirname(cookie_file_path)):
+            os.makedirs(os.path.dirname(cookie_file_path))
+
         ydl_opts = {
             'call_home': False,
             #'live_from_start': True,
@@ -719,7 +729,7 @@ class Generic(Plugin):
             'password': '',
             #'usenetrc': True,
             #'netrc_location': netrc_file_path,
-            #'cookies': cookie_file_path,
+            'cookies': cookie_file_path,
         }
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
