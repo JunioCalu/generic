@@ -725,10 +725,6 @@ class Generic(Plugin):
             'noprogress': True,
             'verbose': False,
             'quiet': True,
-            'username': 'oauth2',
-            'password': '',
-            #'usenetrc': True,
-            #'netrc_location': netrc_file_path,
             'cookies': cookie_file_path,
         }
 
